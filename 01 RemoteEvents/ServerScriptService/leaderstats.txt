@@ -1,0 +1,20 @@
+-- Leaderstats Script
+
+game.Players.PlayerAdded:Connect(function(player)
+	local leaderstats = Instance.new("Folder", player)
+	leaderstats.Name = 'leaderstats'
+	
+	local coins = Instance.new("IntValue", leaderstats)
+	coins.Name = 'Coins'
+	coins.Value = 0
+end)
+
+-- Catch client request from the StarterGui
+
+local serverGiveCurrency = game.ReplicatedStorage.giveCurrency
+
+serverGiveCurrency.OnServerEvent:Connect(function(player, addCoins)
+	local leaderstats = player.leaderstats
+	local coins = leaderstats.Coins
+	coins.Value += addCoins
+end)

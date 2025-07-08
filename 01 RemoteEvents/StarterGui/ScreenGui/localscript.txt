@@ -1,0 +1,8 @@
+local parentGui = script.Parent
+local button = parentGui.giveCurrencyButton
+local serverGiveCurrency = game.ReplicatedStorage.giveCurrency
+
+
+button.MouseButton1Click:Connect(function()
+	serverGiveCurrency:FireServer(50)
+end)

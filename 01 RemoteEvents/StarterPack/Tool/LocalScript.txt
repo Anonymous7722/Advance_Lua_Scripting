@@ -1,0 +1,17 @@
+local tool = script.Parent
+local handle =  tool:FindFirstChild('Handle')
+local serverGiveCurrency = game.ReplicatedStorage.giveCurrency
+
+local isActivate = false
+
+tool.Activated:Connect(function()
+	
+	if isActivate then print('Spam Detect') return end   -- spam detection
+	
+	isActivate = true
+	
+	serverGiveCurrency:FireServer(50)
+	task.wait(1)
+	
+	isActivate = false
+end)
